@@ -1,0 +1,1005 @@
+\input macros
+
+\mpfile{ftnotes.mp}
+
+\baselineskip=13.5pt
+
+\beginsection 正弦曲线
+
+设有一点 $P$ 从 $(1,0)$ 开始， 以角速度 $\omega$ 绕原点旋转，
+则在 $t$ 时刻它转过的角度为 $\theta=\omega t$。
+这时将它到 $x$~轴的距离定义为 $\theta$ 的正弦函数
+（如果位于 $x$~轴下方， 则为负数）， 记作 $\sin\theta$。
+把 $\sin\omega t$ 关于 $t$ 的变化情况画成图像， 就得到了正弦曲线
+$y=\sin\omega t$。
+$$\displaylines{\figure{1}\cr\hbox{单位圆与正弦曲线}}$$
+可见， 正弦曲线和单位圆是密切相关的。
+之后凡是遇到正弦曲线， 都可以从单位圆的角度来思考。
+
+显然， 当 $P$ 转过一整圈之后， 接下来只是重复之前的运动。
+因此 $\sin\omega t$ 是一个周期函数。 采用弧度制， 则
+$$\sin(\omega t + 2\pi) = \sin(\omega t).$$
+因此{\it 周期} $$ T = {2\pi\over\omega}. $$
+周期的倒数称为{\it 频率}， 对于正弦曲线， 频率
+$$ f = {1\over T} = {\omega\over 2\pi}. $$
+另一方面， $\omega = 2\pi f$ 称为{\it 角频率}。
+而 $\theta$ 称为{\it 相位}。
+
+\smallskip
+类似地， 可以研究点 $P$ 的横坐标关于时间的变化情况。 这样得到的是余弦函数
+$\cos\theta$。 一个一般的结论是 $\cos\theta = \sin(\theta+{\pi\over2})$。
+%（如果你把点 $P$ 在单位圆上运动的图像逆时针旋转 $90$~度， 就能理解这个等式%
+%为什么成立。）
+
+\smallskip
+一般地， $P$ 不一定从 $(1,0)$ 开始旋转。
+有两个方面的自由度：
+\item{1.} 旋转的半径可以不是 $1$。 设这个半径为 $A$。
+\item{2.} 开始时 $\theta$ 可以不是 $0$。 设 $t=0$ 时， $\theta=\phi$。
+
+那末可以得到一条新的正弦曲线 $y=A\sin(\omega t+\phi)$。
+这里 $A$ 称为{\it 幅值}， $\phi$ 称为{\it 初相 （位）}。
+
+\beginsection 复数
+
+{\it 虚数} $j$ 具有如下性质： $j^2 = -1$。
+把实数和虚数组合起来， 得到{\it 复数} $z = x + jy$。
+涉及复数的运算， 所有算术规则仍然成立， 所以我们可以把复数当作二项式来计算，
+并把所有计算过程中产生的 $j^2$ 替换成 $-1$。
+
+这并不是特别有趣。 但是欧拉 (Leonhard Euler) 给出了一个非常著名的公式：
+$$ e^{j\theta} = \cos\theta + j\sin\theta,$$
+（自然） 被称为{\it 欧拉公式}。
+这个公式把复数的指数和三角函数联系在了一起。
+欧拉公式的一个推论是
+$$\eqalign{
+\cos\theta &= {e^{j\theta}+e^{-j\theta}\over2},\cr
+\sin\theta &= {e^{j\theta}-e^{-j\theta}\over2j}.\cr
+}$$
+
+\smallskip
+如果将点 $(x,y)$ 和复数 $x+jy$ 对应起来， 那末在单位圆上旋转的动点 $P$ 对应于
+$z=\cos\theta+j\sin\theta=e^{j\theta}$， 其中 $\theta=\omega t$。
+可见， 复指数 $e^{j\omega t}$ 可以非常方便地表示旋转。
+
+显然， $e^{j\omega t}$ 也以 $T={2\pi\over\omega}$ 为周期。
+将一个周期等分成 $N$ ($N>1$) 份， 每份的长度为
+$\Delta t = {T\over N} = {2\pi\over N\omega}$。
+在 $t_k=k\Delta t = {2\pi k\over N\omega}$ ($k=0,1,2,\dots,N-1$) 时刻，
+点 $P$ 对应的复数
+$$z_k=e^{j\omega t_k}=e^{j{2\pi k\over N}} = e^{j\Omega k},$$
+其中 $\Omega = {2\pi\over N}$。
+因为 $z_k^N = e^{j2\pi k} = 1$， 因此也将这 $N$~个复数称为{\it 单位根}。
+
+将 $z_k$ 对应的点画出， 可以发现它们对应单位圆上等分圆周的 $N$~个点，
+其中 $z_0 = 1$。
+$$\displaylines{\figure{2}\cr\hbox{$N=5$ 的情况}}$$
+根据对称性， 可知这 $N$~个复数之和等于 $0$：
+$$\sum_{k=0}^{N-1} z_k = \sum_{k=0}^{N-1} e^{j\omega t_k}
+  = \sum_{k=0}^{N-1} e^{j\Omega k}= 0.$$
+事实上， 求和指标 $k$ 可以取任意连续的 $N$ 个整数。
+将上面的等式两边乘以 $\Delta t = {T\over N}$， 得到
+$$\sum_{k=0}^{N-1} e^{j\omega t_k} \Delta t = 0.$$
+取 $N\to\infty$ 的极限， 上式左侧正是定积分的定义。 由此可知
+$$\int_0^T e^{j\omega t}\,{\rm d}t = 0.$$
+同理， 积分区间 $[0,T]$ 可以换成任意长度为 $T$ 的区间。
+此式也可用欧拉公式将复指数转变为三角函数， 利用三角函数的积分来验证。
+
+\beginsection 连续时间傅里叶级数 (Continuous-Time Fourier Series)
+
+三角函数作为基本初等函数的一类， 是被研究得十分透彻的周期函数。
+自然界中偶尔也存在其他类型的周期函数， 但是它们可能就没有那么优美的数学性质，
+这就带来了研究的困难。
+
+是否能用三角函数来研究一般的周期函数？ 傅里叶 (Joseph Fourier) 认为，
+频率为 $f$ 的周期函数， 总可以由 （幅值、 初相位可能不同的）
+频率为 $f$、 $2f$、 $3f$、 …… 的三角函数复合而成。
+他成功地将这理论应用于他的著作 《热的解析理论》
+({\it Th\'eorie analytique de la chaleur})。
+
+上一节介绍了三角函数和复指数的联系。
+因此我们的目标是把周期函数表示为复指数的和。
+选择复指数有两方面的好处， 首先它可以简化一些计算， 其次我们可以处理的函数%
+将不仅限于实值函数， 也可以包括复值函数。
+
+设 $x(t)$ 的角频率为 $\omega$， 假设我们可以用角频率为 $\omega$ 的整数倍的%
+复指数 $e^{jn\omega t}$ 的复合来表示 $x(t)$：
+$$ x(t) = \sum_{n=-\infty}^\infty A_n e^{jn\omega t}. $$
+此式称为综合方程 (synthesis equation)。
+现在的任务是求出综合方程中的傅里叶系数 $A_n$。
+一种做法是在综合方程两边乘以 $e^{-jk\omega t}$， 然后在一个周期内
+（用下标 $T$ 表示） 积分：
+$$\eqalignno{
+\int_T x(t) e^{-jk\omega t}\,{\rm d}t
+&= \int_T \sum_{n=-\infty}^\infty A_n e^{j(n-k)\omega t}\,{\rm d}t\cr
+\noalign{\hbox{交换积分与求和的次序，*}}
+&= \sum_{n=-\infty}^\infty A_n \int_T e^{j(n-k)\omega t}\,{\rm d}t\cr
+}$$
+\vfootnote*{这一步要求被积函数满足一定条件， 我们暂且不讨论这些条件。}%
+对于式中的积分， 当 $n-k=0$ 时， $e^{j(n-k)\omega t}=1$， 因此积分${}=T$；
+当 $n-k\neq 0$ 时， 被积函数 $e^{j(n-k)\omega t}$ 的周期是
+${2\pi\over(n-k)\omega}={T\over(n-k)}$，
+而我们在长度为 $T$ 的区间内积分， 也就包括了 $(n-k)$ 个周期，
+根据上一节的推导， 积分${}=0$。
+综上，
+$$ A_n \int_T e^{j(n-k)\omega t}\,{\rm d}t
+=\cases{TA_n,&$n-k=0,$\cr 0,&$n-k\neq0.$}$$
+整个求和式中， 只有 $n=k$ 的一项不为 $0$， 因此
+$$ \int_T x(t) e^{-jk\omega t}\,{\rm d}t = TA_k, $$
+即
+$$ A_k = {1\over T}\int_T x(t) e^{-jk\omega t}\,{\rm d}t. $$
+此式给出了 $A_k$ 的计算方法， 称为分析方程 (analysis equation)。
+
+\medbreak
+{\bf 电气工程中的例子}\enspace
+{\it 逆变器}是一种将直流电流转换为交流电流的电力设备。
+一种简单的逆变器的工作原理是按照固定的频率改变电流的流向。
+由此得到的电流波形如下 （称为方波）：
+$$\figure{3}$$
+
+这和理想的正弦电流波形有所区别， 不过它确实是一个周期函数。
+我们可以使用分析方程求出该对应的傅里叶系数。
+注意到当 $-T/2 < t < 0$ 时 $I(t)=-I_m$，
+当 $0 < t < T/2$ 时 $I(t)=I_m$。
+选择 $[-T/2, T/2]$ 作为积分区间：
+$$\eqalign{
+A_k &= {1\over T}\int_{-T/2}^{T/2} I(t)e^{-jk\omega t}\,{\rm d}t\cr
+&={1\over T}\int_{-T/2}^{0}(-I_m) e^{-jk\omega t}\,{\rm d}t
+  +{1\over T}\int_{0}^{T/2} I_m e^{-jk\omega t}\,{\rm d}t\cr
+&= {I_m\over T(-jk\omega)}
+  \left(-e^{-jk\omega t}\bigr|_{-T/2}^0
+       + e^{-jk\omega t}\bigr|_0^{T/2}\right)\cr
+&= {I_m\over j\pi k}\bigl[1 - (-1)^k\bigr]\cr
+&= \cases{{2I_m\over j\pi k},&$k$ 为奇数，\cr0,&$k$ 为偶数。}
+}$$
+代入综合方程， 可以得到
+$$\eqalign{
+I(t) &= {2I_m\over j\pi}\left(\cdots
+       -{e^{-j5\omega t}\over5}
+       -{e^{-j3\omega t}\over3}
+       -{e^{-j \omega t}}
+       +{e^{j  \omega t}}
+       +{e^{j3 \omega t}\over3}
+       +{e^{j5 \omega t}\over5}
+       +\cdots\right)\cr
+&= {4I_m\over\pi} \left(
+            {e^{j \omega t} - e^{-j \omega t}\over 2j}
+  +{1\over3}{e^{j3\omega t} - e^{-j3\omega t}\over 2j}
+  +{1\over5}{e^{j5\omega t} - e^{-j5\omega t}\over 2j}
+  +\cdots\right)\cr
+&= {4I_m\over\pi} \left[
+   \sin(\omega t) + {1\over3}\sin(3\omega t) + {1\over5}\sin(5\omega t)+\cdots
+   \right].\cr
+}$$
+
+这表明， $I(t)$ 可以表示为正弦函数之和：
+$$I(t) = \sum_{n=1,3,5,\dots} I_n(t),$$
+其中 $$I_n(t) = {4I_m\over n\pi}\sin(n\omega t).$$
+当 $n=1$ 时， 对应的波形称为基波，
+而 $n>1$ 对应的波形称为 $n$~次谐波。
+谐波会对电力系统和设备产生有害的影响。
+对谐波的研究是电气工程中的一个重要的课题，
+显然， 傅里叶级数是研究中的重要工具。
+
+从上面的计算中我们看到， 在方波的综合方程中，
+$e^{jn\omega t}$ 和 $e^{-jn\omega t}$ 恰好配成一对， 变成了 $\sin(\omega t)$。
+一般地， 如果所研究的函数 $x(t)$ 是实值函数， 那末 $A_k$ 和 $A_{-k}$
+互为共轭复数， 而综合方程也就可以写成正弦函数和余弦函数的组合。
+此外， 如果 $x(t)$ 是奇函数， 那末 $A_k=-A_{-k}$；
+如果 $x(t)$ 是偶函数， 那末 $A_k=A_{-k}$。
+如果附加 $x(t)$ 是实值函数的条件，
+那末上面两个结论分别为 “$A_k$ 是纯虚数” 和 “$A_k$ 是实数”。
+
+观察叠加后 $I_1+\cdots+I_n$ 的波形，
+可以发现， 随着 $n$ 的增大， 叠加得到的波形越来越接近标准的方波。
+这也验证了展开式的正确性。
+$$\tabskip\centering
+\halign to\hsize{&\hfil#\hfil\cr
+\figure{4}&\figure{7}\cr\noalign{\nobreak}
+基波&$I_1+I_3$\cr\noalign{\kern3\jot}
+\figure{5}&\figure{8}\cr\noalign{\nobreak}
+3 次谐波&$I_1+I_3+I_5$\cr\noalign{\kern3\jot}
+\figure{6}&\figure{9}\cr\noalign{\nobreak}
+5 次谐波&$I_1+I_3+I_5+\cdots+I_{19}$\cr
+}$$
+
+引入第三个坐标轴 $n$， 把 $I_n$ 的波形画在 $n$ 轴相应的位置，
+可以得到非常有意义的图像。
+$$\openup\jot \tabskip\centering
+\halign to \displaywidth{&\hfil$\vcenter{#}$\hfil&\hfil#\hfil\cr
+\noalign{\kern-\jot}
+\figure{10}&$\longrightarrow$&\figure{11}\cr
+\Big\downarrow\cr
+\figure{3}\cr
+}$$
+
+在 $I$--$t$ 平面看， 把各正弦函数的值叠加， 得到的是时域 (time domain) 图像。
+在这个图像上可以看到函数随时间变化的方式。
+从 $I$--$n$ 平面看， 各正弦曲线被压缩为一条条竖线， 分布在不同的频率位置上。
+这是频域 (frequency domain) 图像， 或称频谱。
+从这个图像上可以看出函数包含哪些频率分量， 以及各分量的幅值。
+
+正所谓：
+$$\vcenter{\it\halign{&#\hfil\cr
+横看成岭侧成峰，\cr
+远近高低各不同。\cr
+不识庐山真面目，\cr
+只缘身在此山中。\cr
+}}$$
+傅里叶级数的作用， 就是在时域和频域之间建立联系。
+
+\medbreak
+{\bf 声学的例子}\enspace
+两个不同频率的声波叠加在一起， 将变成一个新的声波。
+使用傅里叶级数可以分析出其中含有哪些频率。
+
+人耳可以分辨出叠加在一起的几个不同频率的声波。
+这表明人耳能够进行傅里叶级数的运算。
+
+双音多频 (Dual-Tone Multi-Frequency, DTMF) 信号被用于电话系统中。
+电话键盘上的每个按键被按下时， 将发出两个不同频率的声波的叠加。
+$$\bordermatrix{
+&\rm1209\,Hz&\rm1336\,Hz&\rm1477\,Hz\cr
+\rm697\,Hz&1&2&3\cr
+\rm770\,Hz&4&5&6\cr
+\rm852\,Hz&7&8&9\cr
+\rm941\,Hz&*&0&\#\cr
+}$$
+交换机收到音频信号后， 利用傅里叶级数求出其中包含的频率，
+从而获知被按下的是哪一个按键。
+
+\beginsection 离散时间傅里叶级数 (Discrete-Time Fourier Series)
+
+如果时间是离散的 （这在数字系统中非常常见），
+也可以研究周期函数的傅里叶级数。
+设时间的取值为整数， 序列 $x[n]$ 的周期为 $N$，
+这意味着 $x[n+N] = x[n]$。
+设 $\Omega = {2\pi\over N}$， 我们仍然假设 $x[n]$ 可以表示为%
+角频率为 $\Omega$ 的整数倍的复指数的和：
+$$ x[n] = \sum_{m\in S_N} \!A_m e^{jm\Omega n}. $$
+此式称为综合方程。
+$S_N$ 表示任意 $N$ 个连续整数构成的集合。
+例如， 可以取 $S_N = \{0,1,\dots,N-1\}$。
+所谓 $\Omega$ 的整数倍的角频率， 实际上只有 $N$~种，
+而不像连续时间中有无穷种。
+这是因为 $e^{jm\Omega n}$ 关于 $m$ 也具有周期性
+($e^{j(m+N)\Omega n}=e^{jm\Omega n}$)。
+
+要求其中的傅里叶系数 $A_m$， 因为离散时间不存在积分的概念， 这时应当使用求和：
+$$\eqalignno{
+\sum_{n\in S_N} x[n] e^{-jk\Omega n}
+&=\sum_{n\in S_N} \sum_{m\in S_N} \!A_m e^{j(m-k)\Omega n}\cr
+\noalign{\hbox{交换求和的次序，}}
+&= \sum_{m\in S_N} \!A_m\! \sum_{n\in S_N} e^{j(m-k)\Omega n}.\cr
+}$$
+和上一节类似， 这里的关键一步是指出
+$$\!A_m\sum_{n\in S_N} e^{j(m-k)\Omega n}
+=\cases{NA_m,&$m-k=0$,\cr0&$m-k=\pm1,\pm2,\dots,\pm(N-1)$.}$$
+从而得到分析方程
+$$ A_k = {1\over N}\sum_{n\in S_N} x[n] e^{-jk\Omega n}. $$
+
+和连续时间傅里叶级数的分析方程
+$$ A_k = {1\over T}\int_T x(t)e^{-jk\omega t}\,{\rm d}t$$
+做对比， 可以发现连续时间和离散时间之间有一些类比关系：
+$$t\leftrightarrow n,\qquad
+  T\leftrightarrow N,\qquad
+  \int{\rm d}t\leftrightarrow \sum_n.$$
+
+\beginsection 连续时间傅里叶变换 (Continuous-Time Fourier Transform)
+
+我们可以把傅里叶级数的思想推广到非周期函数上。
+一个好主意是把非周期的函数看做周期函数在 $T\to\infty$ 时的一种特例。
+这时我们得到的是傅里叶变换。
+
+为了推导相应的公式，
+在连续时间傅里叶级数的分析方程中用 $\Delta\omega$ 代替 $\omega$， 得
+$$A_k = {1\over T}\int_T x(t) e^{-jk\Delta\omega t}\,{\rm d}t.$$
+设 $$I(k\Delta\omega)=\int_{-T/2}^{T/2}
+  x(t) e^{-jk\Delta\omega t}\,{\rm d}t.$$
+代入综合方程， 得
+$$\eqalign{
+x(t) &= \sum_{n=-\infty}^\infty
+  {1\over T}I(n\Delta\omega)e^{jn\Delta\omega t}\cr
+&={1\over2\pi} \lim_{N\to\infty}\sum_{n=-N}^N
+  I(n\Delta\omega)e^{jn\Delta\omega t}\Delta\omega\cr
+}$$
+当 $\Delta\omega\to 0$ ($T\to\infty$) 时， 上式中的求和正是定积分的定义， 于是
+$$\eqalign{
+x(t) &= {1\over2\pi} \int_{-\infty}^{\infty}
+  I(\omega) e^{j\omega t}\,{\rm d}\omega\cr
+&= {1\over2\pi} \int_{-\infty}^{\infty}\left[\int_{-\infty}^{\infty}
+  x(t)e^{-j\omega t}\,{\rm d}t\right]e^{j\omega t}\,{\rm d}\omega
+}$$
+
+上面这些推导从数学角度看有很多毛病， 但是是一个不错的提示。
+总之， 我们把方括号中的表达式定义为
+$$ X(j\omega) = \int_{-\infty}^\infty x(t)e^{-j\omega t}\,{\rm d}t, $$
+这就是 $x(t)$ 的傅里叶变换。 由此可知
+$$ x(t) = {1\over2\pi} \int_{-\infty}^\infty
+  X(j\omega) e^{j\omega t}\,{\rm d}\omega. $$
+这就是傅里叶逆变换。
+
+和傅里叶级数不同， 傅里叶变换是关于角频率 $\omega$ 的连续函数。
+这意味着， 对于时域中的非周期函数 $x(t)$， 频域函数 $X(j\omega)$
+可能含有各种频率分量， 而不仅限于某个基础频率的倍数。
+
+举例而言， 假设 $X(j\omega)$ 包含 $-\omega_c$ 到 $\omega_c$ 的所有频率，
+它将对应时域中的一个非周期函数。 设
+$$X(j\omega) = \cases{1,&$|\omega|<\omega_c$,\cr0,&$|\omega|>\omega_c$.}$$
+其图像为
+$$\figure{12}$$
+那末， 利用傅里叶逆变换公式，
+$$\eqalign{
+x(t) &= {1\over2\pi}\int_{-\infty}^\infty
+  X(j\omega)e^{j\omega t}\,{\rm d}\omega\cr
+&= {1\over2\pi}\int_{-\omega_c}^{\omega_c} e^{j\omega t}\,{\rm d}\omega\cr
+&= {1\over2\pi j\omega} e^{j\omega t}\bigr|_{-\omega_c}^{\omega_c}\cr
+&= {1\over\pi\omega}{e^{j\omega_c}-e^{-j\omega_c}\over2j}\cr
+&= {\sin(\omega_c t)\over\pi\omega}.
+}$$
+时域图像为
+$$\figure{13}$$
+这是著名的 “章鱼函数”。
+
+上面的例子中， 时域函数随着 $|t|$ 的增大是迅速衰减的。
+这很容易理解， 否则在无穷区间上的积分就很容易出问题。
+如果积分发散， 相应的傅里叶 （反） 变换就不存在。
+不幸的是， 我们常常要处理的很多函数在傅里叶 （反） 变换公式中的积分都是发散的。
+为了克服这个困难， 我们使用物理学家狄拉克 (Paul Dirac) 提出的 $\delta$~函数：
+$$\displaylines{\delta(t) = \cases{\infty,&$t=0$,\cr0,&$t\neq0$.}\cr
+\int_{-\infty}^\infty \delta(t)\,{\rm d}t = 1.}$$
+该函数也 （自然） 被称为狄拉克函数， 用图像表示为：
+$$\figure{14}$$
+该图像可以理解为一个宽度为~0， 但面积为~1 的矩形 （因此高度为无穷大）。
+
+这个函数在物理中可以理解为质点的密度关于坐标的函数。
+因为质点将它的所有质量集中在一个点， 因此密度在该点为无穷大，
+在其他点均为零。 但是， 密度关于坐标的积分 （即质量） 仍然是一个有限值。
+
+狄拉克函数的一个有用的性质是
+$$\int_{-\infty}^{\infty} f(t)\delta(t)\,{\rm d}t = f(0).$$
+这是因为， $\delta(t)$ 将 $f(t)$ 在 $t\neq0$ 的部分全部消除了；
+在 $t=0$ 处， $f(t)\delta(t)$ 是一个宽度为~0， 但面积为~$f(0)$ 的矩形。
+所以， 总的积分值等于 $f(0)$。
+
+我们不妨令 $X(j\omega)=\delta(\omega-\omega_0)$， 代入傅里叶反变换的公式，
+$$\eqalign{
+x(t) &= {1\over2\pi}\int_{-\infty}^{\infty}
+  \delta(\omega-\omega_0)e^{j\omega t}\,{\rm d}\omega\cr
+&= {1\over2\pi}\int_{-\infty}^\infty \delta(u) e^{j(u+\omega_0)t}\,{\rm d}u\cr
+&= {1\over2\pi}e^{j\omega_0t}.
+}$$
+这样， 就得到了一个非常重要的变换对：
+$$x(t)=e^{j\omega_0 t}\;\longleftrightarrow\;
+  X(j\omega)=2\pi\delta(\omega-\omega_0).$$
+利用欧拉公式， 进一步可以得到
+$$\eqalign{
+x(t)=\cos(\omega_0 t)\;&\longleftrightarrow\;
+X(j\omega)=\pi
+           \bigr[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\bigr],\cr
+x(t)=\sin(\omega_0 t)\;&\longleftrightarrow\;
+X(j\omega)=-j\pi
+           \bigr[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\bigr],\cr
+}$$
+
+\beginsection 卷积定理
+
+对于两个函数 $x_1(t)$ 和 $x_2(t)$， 定义它们的卷积
+$$ x_1(t) * x_2(t) = \int_{-\infty}^{\infty} x_1(\tau)x_2(t-\tau){\rm d}\tau. $$
+
+卷积定理指出， 时域中的卷积， 对应频域中的乘法：
+$$ x_1(t) * x_2(t)\;\longleftrightarrow\; X_1(j\omega)X_2(j\omega).$$
+反之亦然， 但是注意有一个系数 ${1\over2\pi}$：
+$$ x_1(t)x_2(t)\;\longleftrightarrow\;{1\over2\pi}X_1(j\omega)*X_2(j\omega).$$
+
+\medbreak
+{\bf 通信中的例子}\enspace
+调幅 (Amplitude modulation, AM) 是电子通信中使用的一种调制技术。
+它把调制信号 （如语音） 调制到载波 （无线电波） 上， 实现信息的传输。
+
+不妨设调制信号为 $x(t)$， 而载波为 $x_c(t) = \cos(\omega_r t)$，
+则调制后的信号为
+$$ y(t) = x_c(t)x(t) = \cos(\omega_r t)x(t). $$
+即， 载波的幅度发生了改变， 因此称为调幅。
+
+在频域中， 调制信号的傅里叶变换为 $X(t)$， 载波的傅里叶变换为
+$X_c(j\omega)=\pi\bigl[\delta(\omega-\omega_r)+\delta(\omega+\omega_r)\bigr]$。
+因此
+$$\eqalign{
+Y(j\omega) &= {1\over2\pi} X_c(j\omega) * X(j\omega)\cr
+&= {1\over2\pi} \int_{-\infty}^\infty X_c(ju) X(j(\omega-u))\,{\rm d}u\cr
+&= {1\over2\pi} \int_{-\infty}^\infty
+  \pi\bigl[\delta(u-\omega_r)+\delta(u+\omega_r)\bigr]X(j(\omega-u))\,
+  {\rm d}u\cr
+&= {1\over2}\bigl[X(j(\omega-\omega_r))+X(j(\omega+\omega_r))\bigr].
+}$$
+在此我们指出， 一个函数 $x(u)$ 与 $\delta(u-u_0)$ 的卷积，
+等于这个函数向右平移 $u_0$。
+当 $u_0=0$ 时， 一个推论是， 任何函数和狄拉克函数的卷积等于它自身。
+
+从图像上看， $Y(j\omega)$ 是由两个经过平移 （和缩放）
+的 $X(j\omega)$ 的 “影子” 构成的。
+
+$$\openup\jot\tabskip\centering
+\halign to\displaywidth{&\hfil#\hfil\cr\noalign{\vskip-\jot}
+\figure{18}&\figure{15}\cr\noalign{\nobreak}
+调制信号&调制信号的频谱\cr\noalign{\vskip\jot}
+\figure{19}&\figure{16}\cr\noalign{\nobreak}
+载波&载波的频谱\cr\noalign{\vskip\jot}
+\figure{20}&\figure{17}\cr\noalign{\nobreak}
+调制后的波形&调制后的频谱\cr
+}$$
+
+在上面的例子中， 我们假设调制信号的频谱是有频率上限的。
+这是可以理解的。 例如， 对于语音信号， 通常频率上限在 $20\,\rm kHz$ 附近。
+而载波的频率充分大， 这样可以将调制产生的两个 “影子” 频谱分开。
+
+如果仅从时域观察， 则调制后的波形比较复杂而且难以寻找规律。
+但是从频域观察， 则可以发现很明显的规律。
+因为调制信号在频域中的形状没有被破坏， 所以， 可以相信有办法能够从调制后的%
+波形中恢复出被调制的信息。
+
+如果空间中叠加了两个调制后的信号， 且载波的频率相近， 那末它们之间就可能发生%
+相互干扰。 这种情况下， 就会有信息损失， 并且表现为通信质量变差等现象。
+$$\figure{21}$$
+
+\beginsection 线性时不变系统 (Linear Time-Invariant Systems)
+
+给定一个输入信号 $x(t)$， 经过一定的处理得到输出信号 $y(t)$。
+这样的 “处理器” 称为一个{\it 系统}。
+$$x(t) \;\buildrel 系统 \over{\relbar\mkern-3.5mu\longrightarrow}\; y(t)$$
+上一节所说的调幅调制， 在载波固定的情况下， 就可以看作是一个系统。
+
+本节将讨论一种特殊的系统。 它具有 1) 线性性质
+$$ax_1(t) + bx_2(t)\;\longrightarrow\; ay_1(t) + by_2(t);$$
+2) 时不变性质
+$$x(t-\tau)\;\longrightarrow\; y(t-\tau),\quad\hbox{任意 $\tau$}.$$
+
+线性性质也可以表述为叠加原理： 当输入为两信号的叠加时，
+输出为各自单独作为输入时对应的输出的叠加。
+时不变性质则说明系统的行为和时间原点的选取无关：
+只要输入信号的 “形状” 一样， 输出信号的 “形状” 就一样。
+可以理解， 许多现实存在的系统都是时不变的：
+系统的行为并不依赖于一个特殊的时间原点。
+%可以验证， 上节所述的调幅调制系统并非时不变系统。
+
+%\medskip
+%{\bf 电路中的例子}\enspace
+%如图所示， 简单的电阻电路中， 含有两个电压源 $V_1$ 和 $V_2$。
+%$$\figure{22}$$
+%要求两电阻之间节点的对地电压 $V_o$， 可以利用叠加原理。
+%当 $V_1$ 单独作用时， 令 $V_2=0$， 相当于短路。 等效电路如下
+%$$\figure{23}$$
+%这是一个串联电路， 根据串联电阻的分压公式可知
+%$$V_o^{(1)} = {R_2\over R_1+R_2}V_1.$$
+%当 $V_2$ 单独作用时， 同理可求得
+%$$V_o^{(2)} = {R_1\over R_1+R_2}V_2.$$
+%当两个电压源共同作用时，
+%$$V_o = V_o^{(1)} + V_o^{(2)} = {R_2V_1 + R_1V_2 \over R_1 + R_2}.$$
+%
+
+当输入为狄拉克函数 $\delta(t)$ 时， 系统的输出称为{\it 冲激响应} (impulse
+response)， 记作 $h(t)$。
+对于一般的输入 $x(t)$， 
+$$\eqalign{
+x(t)&=\int_{-\infty}^\infty x(\tau)\delta(t-\tau)\,{\rm d}\tau\cr
+&=\lim_{\Delta\tau\to 0}
+  \sum_{n=-\infty}^{\infty} x(n\Delta\tau)\delta(t-n\Delta\tau)\Delta\tau
+}$$
+也就是说， $x(t)$ 可以分解为无数个输入
+$x_n(t) = x(n\Delta\tau)\delta(t-n\Delta\tau)\Delta\tau$ 的叠加。
+（注意这里 $t$ 是时间变量，
+$\Delta\tau$、 $n\Delta\tau$、 $x(n\Delta\tau)$ 均为常数。）
+利用线性时不变性质， 可知与 $x_n(t)$ 对应的输出
+$$y_n(t) = x(n\Delta\tau)h(t-n\Delta\tau)\Delta\tau.$$
+由叠加原理， 得总的输出
+$$\eqalign{
+y(t)&=\lim_{\Delta\tau\to0} \sum_{n=-\infty}^\infty y_n(t)\cr
+&=\lim_{\Delta\tau\to0} \sum_{n=-\infty}^\infty
+  x(n\Delta\tau)h(t-n\Delta\tau)\Delta\tau\cr
+&=\int_{-\infty}^\infty x(\tau)h(t-\tau)\,{\rm d}\tau\cr
+&=x(t) * h(t).
+}$$
+可见， 一旦我们知道了冲激响应 $h(t)$， 我们就可以求出该系统对任意输入
+$x(t)$ 的输出， 且输出 $y(t)$ 就是输入和冲激响应的卷积。
+这是线性时不变系统的一个优良性质： 整个系统的特征都可以用 $h(t)$ 描述。
+
+另一方面， 根据卷积定理， 频域中存在如下方程：
+$$Y(j\omega) = X(j\omega)H(j\omega).$$
+可见， 在频域中研究系统行为， 只需处理函数的乘法，
+这比在时域中处理卷积要容易一些。
+
+\medbreak
+{\bf 通信中的例子}\enspace
+继续上一节的例子。 调制后时域和频域的图像如下。
+$$\matrix{\figure{20}&\figure{17}}$$
+如果我们希望从调制后的信号 $y(t)$ 中恢复出原始的信号 $x(t)$
+（这个过程称为解调）， 一种办法是先将 $y(t)$ 和 $2\cos(\omega_r t)$ 相乘，
+得到一个新的波形 $\tilde x(t)$。
+我们已经知道， 这个相乘的过程在频域中对应将原频谱的两个 “影子” 进行压缩和平移。
+$$\matrix{\figure{24}&\figure{25}}$$
+可见， 在低频部分又恢复出了原始信号的频谱。
+但是， 高频部分仍然有多余的频谱， 是我们不需要的
+（在时域中， 表现为多余的高频振荡）。
+
+设 $$H(j\omega)=\cases{1,&$|\omega|<\omega_c,$\cr0,&$|\omega|>\omega_c$.}$$
+那末 $\widetilde X(j\omega)H(j\omega)$ 就只包含频率在 $[-\omega_c,\omega_c]$
+的部分。 选取适当的 $\omega_c$， 就可以保留所需的频率， 而滤除其他的频率。
+在时域中， 这就对应了原始的调制信号 $x(t)$。
+$$\matrix{\figure{18}&\figure{26}}$$
+
+在这个例子中， $H(j\omega)$ 对应一个线性时不变系统。
+事实上， 这个系统的的冲激响应就是之前计算过的 “章鱼函数”。
+这个系统由于 “通低频、 阻高频” 的特性，
+被称为{\it 低通滤波器} (low-pass filter)。
+这里给出的低通滤波器能够完全清除不需要的频率， 并完全保留需要的频率，
+因此被称为理想低通滤波器。
+
+目前， 我们尚未制造出理想的低通滤波器。
+现实中的低通滤波器， $H(j\omega)$ 在 $\omega_c$ 附近是难以实现%
+瞬间从 $1$ 下降到 $0$ 的， 而是有一个缓慢下降的过程。
+一种简单的低通滤波器可由电阻和电容构成， 如下图所示
+$$\figure{27}$$
+在这个电路中， 电阻两端的电压为 $v_i(t)-v_o(t)$， 根据欧姆定律得其电流
+$$i_R={v_i(t)-v_o(t)\over R}.$$
+电容两端的电压为 $v_o(t)$， 根据电容的伏安关系式， 得
+$$i_C=C{{\rm d}v_o(t)\over{\rm d}t}.$$
+因为电阻和电容是串联关系， 流过它们的电流应当相等：
+$$i_R=i_C.$$
+以上三式联立， 消去 $i_R$ 和 $i_C$， 得
+$$RC{{\rm d}v_o(t)\over{\rm d}t}+v_o(t)=v_i(t).$$
+这是一个一阶常微分方程。 因此该滤波器电路也被称作一阶低通滤波器。
+
+给定一个输入 （电压） 信号 $v_i(t)$， 我们可以通过解这个微分方程，
+得到输出信号 $v_o(t)$。 可想而知， 解这个方程需要花费一定的时间，
+而我们也只能针对一个具体的输入得到一个输出， 而不能得出此滤波器的一般的性质。
+这是在时域内分析的一个局限。
+
+下面我们将在频域内分析这个系统。 首先， 对傅里叶逆变换的公式
+$$v_o(t) = \int_{-\infty}^\infty V_o(j\omega) e^{j\omega t}\,{\rm d}\omega$$
+的两边关于 $t$ 求导， 得
+$$\eqalign{
+{{\rm d}v_o(t)\over{\rm d}t}&=
+{{\rm d}\over{\rm d}t}
+  \int_{-\infty}^\infty V_o(j\omega) e^{j\omega t}\,{\rm d}\omega\cr
+&=\int_{-\infty}^\infty {\partial\over\partial t}
+  \bigl[V_o(j\omega) e^{j\omega t}\bigr]{\rm d}\omega\cr
+&=\int_{-\infty}^\infty V_o(j\omega) j\omega e^{j\omega t}\,{\rm d}\omega.
+}$$
+由此我们得到了一个新的变换对
+$${{\rm d}v_o(t)\over{\rm d}t}\;\longleftrightarrow\;
+  j\omega V_o(j\omega).$$
+上式称为傅里叶变换的微分性质， 也可以表述为：
+时域中的微分运算， 等价于频域中乘以 $j\omega$。
+
+对上面的微分方程两边做傅里叶变换， 得到频域方程
+$$j\omega RCV_o(j\omega) + V_o(j\omega) = V_i(j\omega).$$
+可见， 微分方程变成了代数方程。 不必预先知道 $V_i(j\omega)$ 的形式，
+就可以解出
+$$V_o(j\omega) = {V_i(j\omega)\over 1+j\omega RC} = V_i(j\omega)H(j\omega),$$
+其中 $$H(j\omega) = {1\over1+j\omega RC}.$$
+
+$H(j\omega)$ 完整地描述了该系统的行为。
+下面我们讨论这个系统为什么是一个低通滤波器：
+$$\eqalign{
+\left|V_o(j\omega)\over V_i(j\omega)\right|
+&=|H(j\omega)|\cr
+&={1\over\sqrt{1+(\omega RC)^2}}.}
+\hskip.5in\vcenter{\figure{28}}
+$$
+可见， 当 $\omega$ 较小 （低频） 时， $|H(j\omega)|\approx1$。
+这时， $|V_o(j\omega)|$ 非常接近于 $|V_i(j\omega)|$， 这表明低频信号被保留。
+而随着 $\omega$ 增大， $|H(j\omega)|$ 越来越小， 最终消失为~$0$。
+这时 $|V_o(j\omega)|$ 相比 $|V_i(j\omega)|$ 也就越来越小，
+这表明高频信号被抑制。
+因此， 这个系统具备 “通低频、 阻高频” 的性质。
+
+\beginsection 离散时间傅里叶变换 (Discrete-Time Fourier Transform)
+
+离散时间的非周期函数也可以有它的傅里叶变换。
+根据类比关系
+$$t\leftrightarrow n,\qquad \int{\rm d}t\leftrightarrow \sum_n,$$
+可以直接写出变换公式
+$$X\bigl(e^{j\Omega}\bigr) = \sum_{n=-\infty}^{\infty} x[n] e^{-j\Omega n}.$$
+选择 $X\bigl(e^{j\Omega}\bigr)$ 这个记号， 除了可以%
+和连续时间傅里叶变换 $X(j\omega)$ 区分以外，
+还暗示了这是一个周期为 $2\pi$ 的连续函数。
+
+在此指出， 对于离散时间序列， 频率 $|\Omega|=\pi$ 是最高的频率，
+对应周期 $N=2$。 也就是说， 这是一个交替的序列。
+虽然 $N=1$ 时 “周期” 更短， 但是稍加思考便可发现，
+这是一个常数序列， 所以实际上是最低频率。
+
+逆变换公式是
+$$x[n] = {1\over2\pi}\int_{2\pi}
+  X\bigl(e^{j\Omega}\bigr) e^{j\Omega n}\,{\rm d}\Omega.$$
+下标 $2\pi$ 表示积分区间为任意长度为 $2\pi$ 的区间。
+
+卷积定理在离散时间中也成立。 定义 $x_1[n]$ 和 $x_2[n]$ 的离散时间卷积
+$$x_1[n]*x_2[n] = \sum_{m=-\infty}^\infty x_1[m]x_2[n-m].$$
+则卷积定理指出
+$$\eqalign{
+x_1[n]*x_2[n]\;&\longleftrightarrow\;
+  X_1\bigl(e^{j\Omega}\bigr)X_2\bigl(e^{j\Omega}\bigr),\cr
+x_1[n]x_2[n]\;&\longleftrightarrow\;
+  {1\over2\pi}X_1\bigl(e^{j\Omega}\bigr)*X_2\bigl(e^{j\Omega}\bigr).\cr
+}$$
+
+我们引入卷积定理自然是为了方便线性时不变系统的研究。
+离散时间的线性时不变系统 （显然） 仍然具有线性性质和时不变性质，
+只不过时间变量由 $t$ 变成了 $n$。 定义冲激函数
+$$\delta[n] = \cases{1,&$n=0$,\cr0,&其他.}$$
+则当输入为 $\delta[n]$ 时， 系统的输出称为冲激响应。
+当输入为一般的 $x[n]$ 时， 和连续时间类似， 输出是输入和冲激响应的卷积：
+$$y[n] = x[n]*h[n].$$
+在频域中， 这对应方程
+$$Y\big(e^{j\Omega}\bigr) = X\big(e^{j\Omega}\bigr) H\big(e^{j\Omega}\bigr).$$
+
+除了公式的具体计算方法不同以外， 一般的研究方法对连续时间和离散时间是通用的。
+在离散时间中， 傅里叶变换同样能够把卷积变换成乘法。
+
+\medbreak
+{\bf 统计中的例子}\enspace
+滑动平均是一种简单的数据处理方法。
+它可以平滑数据的短期 （高频） 波动， 反应长期 （低频） 的变化趋势。
+因此， 它也具备 “通低频， 阻高频” 的特点， 也可以看作一种低通滤波器。
+
+例如， 下图反映了 Apple, Inc.\ 在一个月内的股价。
+$$\figure{29}$$
+这个数据是按日统计的， 所以是一个离散时间的函数。
+图中作出的 3~条曲线则是取的收盘价的 3~日/5~日/7~日滑动平均。
+滑动平均线在金融市场中是一个重要的工具。
+
+一般地， 对于离散时间序列 $x[n]$， $N$~项滑动平均定义为
+$$y[n] = {1\over N} \sum_{i=0}^{N-1} x[n-i].$$
+即， 在 $n$~时刻， 以及之前的 $N-1$~个时刻的 $N$~个值的平均值。
+这个等式定义了一个线性时不变系统。
+该式也可以写成
+$$y[n] = \sum_{i=-\infty}^{\infty} h_N[i]x[n-i] = h_N[n] * x[n],$$
+其中
+$$h_N[n] = \cases{{1\over N},&$0\leq n<N$\cr0,&其他}$$
+是该系统的冲激响应。 其图像如下：
+$$\figure{33}$$
+
+由离散时间傅里叶变换公式， 可知
+$$\eqalignno{
+H_N\bigl(e^{j\Omega}\bigr)
+&=\sum_{n=-\infty}^\infty h[n]e^{-j\Omega n}\cr
+&={1\over N}\sum_{n=0}^{N-1} e^{-j\Omega n}&(等比数列)\cr
+&={1\over N}{1-e^{-j\Omega N}\over 1-e^{-j\Omega}}.\cr
+}$$
+这样我们就求出了 $H_N\bigl(e^{j\Omega}\bigr)$。
+在上面的分式中， 分母提取 $e^{-j\Omega/2}$， 分子提取 $e^{-j\Omega N/2}$，
+再利用欧拉公式， 可以得到
+$$ H_N\bigl(e^{j\Omega}\bigr)
+={e^{-j\Omega(N-1)/2}\over N}{\sin(\Omega N/2)\over\sin(\Omega/2)}. $$
+
+下面讨论这个系统为什么是一个低通滤波器，
+因为 $\bigl|e^{-j\Omega(N-1)/2}\bigr|=1$， 所以
+$$\bigl|H_N\bigl(e^{j\Omega}\bigr)\bigr|
+={1\over N}\left|\sin(\Omega N/2)\over\sin(\Omega/2)\right|.$$
+对于 $N=3,5,7$， 可以做出 $\bigl|H_N\bigl(e^{j\Omega}\bigr)\bigr|$ 的图像：
+$$\matrix{
+\figure{30}&\figure{31}&
+\figure{32}\cr
+}$$
+可见， $\Omega$ 接近 $0$ 时， $\bigl|H_N\bigl(e^{j\Omega}\bigr)\bigr|$
+接近 $1$， 说明低频分量被保留。 随着频率的增大，
+$\bigl|H_N\bigl(e^{j\Omega}\bigr)\bigr|$ 总体呈变小的趋势，
+说明高频分量被抑制。
+
+和之前讨论的一阶低通滤波器不同， $\bigl|H_N\bigl(e^{j\Omega}\bigr)\bigr|$
+不是随着 $|\Omega|$ 增大而单调下降的， 而是有一些 “反弹”。
+但是这不影响滑动平均仍然可以起到低通滤波的作用。
+而且这个系统在数字系统中实现起来非常容易， 只需保存 $N$~个时间的数值，
+计算平均值也是很容易实现的。
+
+滑动平均的另一个性质是， 它可以完全滤除某些特定频率的信号。
+例如， 参数为 $N$ 的滑动平均可以完全滤除周期为 $N$ 的信号。
+这是因为当 $|\Omega|={2\pi\over N}$ 时，
+$\bigl|H_N\bigl(e^{j\Omega}\bigr)\bigr|=0$。
+举例而言， 假设我知道 Apple, Inc.\ 的股价由于某种原因，
+在一周内总是具有固定的变化规律，
+那末我可以通过设置 $N=7$ 的滑动平均， 来滤除这种周期变化。%
+\footnote*{相比之下， 我可能更愿意利用这种规律套利， 而不是滤除它。}
+
+\beginsection 采样定理
+
+本节将讨论连续时间信号和离散时间信号的互相转换的方法。
+
+回顾之前讨论的狄拉克函数的性质：
+$$\int_{-\infty}^{\infty} x(t)\delta(t)\,{\rm d}t = x(0).$$
+这表明函数 $x(t)$ 与 $\delta(t)$ 相乘后， 就只剩下了 $t=0$ 时刻的信息。
+这就是一种 “采样”。 但是只采样一个时间点的函数值并没有太大的意义。
+假如我们希望采样 \dots, $-2T$, $-T$, $0$, $T$, $2T$, \dots 等时刻的函数值，
+可以将 $x(t)$ 与 $\delta(t)$, $\delta(t\pm T)$, $\delta(t\pm2T)$
+等函数相乘并求和：
+$$x_T(t) = \sum_{n=-\infty}^\infty x(t)\delta(t-nT) = x(t)\delta_T(t),$$
+其中
+$$\delta_T(t) = \sum_{n=-\infty}^\infty \delta(t-nT)$$
+称为冲激串 (impulse train)， 或狄拉克梳 (Dirac comb) 函数。
+采样过程如下图所示：
+$$\vcenter{\figure{18}\figure{34}}\;\buildrel\times\over\longrightarrow\;
+\vcenter{\figure{35}}$$
+
+设 $\omega_s={2\pi\over T}$， 称为采样角频率。
+注意到 $\delta_T(t)$ 是一个周期为 $T$ 的函数，
+我们可以利用傅里叶级数把它写成角频率为 $\omega_s$ 的倍数的复指数的和。
+根据分析方程， 傅里叶系数为
+$$\eqalignno{
+A_k &= {1\over T}\int_{-T/2}^{T/2} \delta_T(t)e^{-jk\omega_s t}\,{\rm d}t\cr
+%A_k &= {1\over T}\int_{-T/2}^{T/2} \delta(t)e^{-jk\omega_s t}\,{\rm d}t\cr
+&= {1\over T}.
+}$$
+上式成立的原因是， 被积函数在 $[-T/2,T/2]$~内, 只有一个位于 $t=0$ 的冲激，
+其 “面积” 为 $e^{-jk\omega_s t}\mathclose|_{t=0}=1$。
+因此综合方程为
+$$\delta_T(t) = \sum_{n=-\infty}^{\infty} {1\over T}e^{jn\omega_s t}.$$
+
+在连续时间傅里叶变换中， 我们已经导出了如下变换对：
+$$e^{j\omega_0 t}\;\longleftrightarrow\;2\pi\delta(\omega-\omega_0).$$
+取 $\omega_0=0$, $\pm\omega_s$, $\pm2\omega_s$,~\dots\
+并乘以系数 $1\over T$ 后叠加， 就得到了冲激串函数。 因此它的傅里叶变换是
+$$\Delta_T(j\omega)=
+\sum_{n=-\infty}^{\infty} {1\over T}2\pi\delta(\omega-n\omega_s)
+= {2\pi\over T}\delta_{\omega_s}(\omega).$$
+这表明冲激串函数的傅里叶变换仍是一个冲激串：
+$$\delta_T(t)\;\longleftrightarrow\;{2\pi\over T}\delta_{\omega_s}(\omega),
+\qquad \omega_s T = 2\pi.$$
+
+导出冲激串函数的傅里叶变换以后， 我们在频域中观察上述采样过程。
+由卷积定理可知， 时域中的乘法对应频域中的卷积：
+$$\eqalign{
+x_T(t)=x(t)\delta_T(t)\;\longleftrightarrow\;
+X_T(j\omega) &= {1\over2\pi}X(j\omega)*\Delta_T(j\omega)\cr
+&= \sum_{n=-\infty}^\infty {1\over2\pi}X(j\omega)*
+  {2\pi\over T}\delta(\omega-n\omega_s)\cr
+&= {1\over T}\sum_{n=-\infty}^\infty X(j(\omega-n\omega_s))\cr
+}$$
+由此可知 $X_T(j\omega)$ 是将 $X(j\omega)$ 的图形向右平移 $n\omega_s$
+($n=0$, $\pm1$, $\pm2$,~\dots) 并乘以系数 $1\over T$ 后叠加得到的结果。
+整个采样过程如下图所示。
+$$\displaylines{
+\figure{18}\hfil\figure{15}\cr
+\figure{34}\hfil\figure{36}\cr
+\figure{35}\hfil\figure{37}\cr
+}$$
+
+如果被采样信号 $x(t)$ 的频谱有频率上限，
+那末当 $\omega_s$ 充分大时， 就可以保证其频谱经过平移并叠加时， 不会发生重叠。
+事实上， 设当 $|\omega|>\omega_m$~时， $X(j\omega)=0$，
+那末， 只需满足 $$\omega_s > 2\omega_m$$ 这个条件， 就不会发生重叠。
+并且， 使用截止频率 $\omega_c=\omega_s/2$ 的低通滤波器，
+就可以恢复出原始的连续信号。 这就是{\bf 奈奎斯特--香农采样定理}
+(Nyquist--Shannon sampling theorem) 的内容：
+\par{\narrower\it
+采样后的信号能被恢复的充分条件是采样频率大于被采样信号的最高频率的 2~倍。
+\par}
+
+\medbreak
+{\bf 数字媒体的例子}\enspace
+数字录音的原理是， 先将声音 （连续时间） 信号经过低通滤波器滤波，
+消除 $f_m\approx 20\,\rm kHz$ （人耳能分辨的频率上限） 以外的频率。
+然后按照某个采样频率 $f_s$， 对声波的幅度进行采样。
+根据奈奎斯特--香农采样定理， 合理的采样频率应满足 $f_s > 2f_m$。
+常用的采样频率为 $44.1\,\rm kHz$， 满足上述条件。
+
+\medbreak
+经冲激串采样后的信号 $x_T(t)$ 是方便我们进行理论推导的工具。
+在现实的数字系统中， 采样后的信号为一离散时间信号 $x[n]=x(nT)$。
+显然它和 $x(t)$ 以及 $x_T(t)$ 应有一定的联系。
+$x[n]$ 的离散时间傅里叶变换为
+$$\eqalignno{
+X\bigl(e^{j\Omega}\bigr)
+&= \sum_{n=-\infty}^\infty x[n] e^{-j\Omega n}\cr
+&= \sum_{n=-\infty}^\infty x(nT) e^{-j{\Omega\over T}nT}\cr
+&= \int_{-\infty}^\infty x(t) e^{-j{\Omega\over T}t}
+  \sum_{n=\infty}^\infty\delta(t-nT)\,{\rm d}t\cr
+&= \int_{-\infty}^\infty x(t)\delta_T(t)e^{-j{\Omega\over T}t}\,{\rm d}t.
+}$$
+另一方面，
+$$
+X_T(j\omega)=\int_{-\infty}^\infty x(t)\delta_T(t)e^{-j\omega t}\,{\rm d}t.
+$$
+可以发现两个等式具有相同的形式。
+因此， 离散信号的傅里叶变换可以由经冲激串采样后的连续信号的傅里叶变换求出：
+$$X\bigl(e^{j\Omega}\bigr) = X_T(j\omega)\mathclose|_{\omega = \Omega/T}.$$
+换言之， $X\bigl(e^{j\Omega}\bigr)$ 和 $X_T(j\omega)$ 的图形是一样的，
+只是换了一下横坐标的标度：
+当 $\omega=\omega_s$ 时， $\Omega=\omega T = 2\pi$。
+$$\displaylines{
+\figure{35}\hfil\figure{37}\cr
+\figure{38}\hfil\figure{39}\cr
+}$$
+这样求出的 $X\bigl(e^{j\Omega}\bigr)$ 恰好是一个周期为 $2\pi$ 的连续函数，
+满足离散时间傅里叶变换的性质。
+
+\def\framed#1{%
+  \setbox0\hbox{\kern1.5pt\relax#1\kern1.5pt}%
+  \setbox0\vbox{\hrule\kern1.5pt\box0\kern1.5pt\hrule}%
+  \setbox0\hbox{\vrule\box0\vrule}%
+  \ifmmode\vcenter{\box0}\else\vbox{\box0}\fi}
+\def\xarrow#1#2{\vcenter{\offinterlineskip\halign{\hfil##\hfil\cr
+  \vbox to0pt{\vss\hbox{$\scriptstyle\;\;\mathstrut#2\;\;$}}\cr
+  \csname#1arrowfill\endcsname\cr}}}
+\def\xxarrow#1#2{\vcenter{\offinterlineskip\halign{\hfil##\hfil\cr
+  \vbox to0pt{\vss\hbox{$\scriptstyle\;\;\mathstrut#1\;\;$}}\cr
+  \rightarrowfill\cr\leftarrowfill\cr
+  \vbox to0pt{\hbox{$\scriptstyle\;\;\mathstrut#2\;\;$}\vss}\cr}}}
+
+下表总结了本节讨论的离散时间信号和连续时间信号在时域和频域内的相互联系。
+可以发现， $X(j\omega)$ 和 $X\bigl(e^{j\Omega}\bigr)$ 没有直接的联系。
+我们使用了冲激串采样作为工具，
+用 $X_T(j\omega)$ 作为连接离散时间和连续时间的桥梁。
+$$\vcenter{\baselineskip=0pt\halign{&\hfil$\displaystyle#$\hfil\cr
+\framed{$x[n]$}&\;\xarrow{left}{t=nT}\;&
+\framed{$x(t)$}&\;\xxarrow{\times\delta_T(t)}{低通滤波器}\;&
+\framed{$x_T(t)$}\cr
+\uparrow&&\uparrow&&\uparrow\cr
+\scriptstyle\rm DTFT&&\scriptstyle\rm CTFT&&\scriptstyle\rm CTFT\cr
+\downarrow&&\downarrow&&\downarrow\cr
+\framed{$X\bigl(e^{j\Omega}\bigr)$}&\;&
+\framed{$X(j\omega)$}&\;
+  \xxarrow{*{1\over T}\delta_{\omega_s}(\omega)}
+  {\times{T,\;|\omega|<\omega_s/2\atopwithdelims\{.
+    \rlap{$\scriptscriptstyle0,$}\phantom {T,}\;|\omega|>\omega_s/2}}\;&
+\framed{$X_T(j\omega)$}\cr
+\big\uparrow&&&&\big\uparrow\cr\noalign{\kern-\lineskip}
+\hfill\kern-.4pt\leaders\hrule\hfill&
+  \multispan3\hrulefill&\leaders\hrule\hfill\kern-.4pt\hfill\cr
+\multispan5\hfil$\scriptstyle \omega={\Omega\over T}$\hfil\cr
+}}$$
+
+\medbreak
+如果条件 $\omega_s>2\omega_m$ 不满足， 则平移后的频谱会重叠，
+而导致原始信号难以被恢复。
+这种现象称为{\it 混叠} (aliasing)。
+
+举例而言， 设有一个信号 $x(t)=\cos 3t$，
+则 $$X(j\omega)=\pi\bigl[\delta(\omega-3)+\delta(\omega+3)\bigr].$$
+因此， 频率上限为 $\omega_m=3$。
+设采样角频率 $\omega_s=4$， 则采样得到的结果为
+$$x[0]=1,\,x[\pm1]=0,\,x[\pm2]=-1,\,x[\pm3]=0,\,\dots$$
+时域和频域图像如图所示：
+$$\displaylines{\figure{40}\hfil\figure{41}}$$
+在频域中， 位于 $\omega=\pm3$ 的两个频率分量经过平移后，
+落在了 $\omega=\pm1$ 的位置 （以及其他位置， 没有画出）。
+如果仍使用截止频率 $\omega_c = \omega_s/2 = 2$ 的低通滤波器进行滤波，
+则在时域中得到的结果是 $\tilde x(t) = \cos t$， 变成了另外一个频率的信号。
+
+\medskip
+{\bf 视觉的例子}\enspace
+在一些电影画面中， 高速旋转的物体 （如车轮） 在观众看来似乎沿着相反的方向转动。
+这个现象可以用混叠来解释。
+
+如图所示， 设圆盘上有动点 $P$， 以角速度 $\omega_0$ 旋转。
+$$\figure{42}$$
+之前提到， 复指数 $e^{j\omega_0 t}$ 可以方便地描述旋转，
+因此这里我们用它来研究点~$P$ 的运动。
+
+不失一般性， 设圆盘的半径为~$1$， 而 $t=0$~时点~$P$ 位于 $x$~轴上。
+这样， 点~$P$ 就和复数 $z(t)=e^{j\omega_0 t}=\cos\omega_0 t + \sin\omega_0 t$
+对应起来。
+我们只需研究 $z(t)$， 就相当于研究了点~$P$ 的运动。
+这是我们首次将傅里叶变换应用于复值函数。
+
+$z(t)$ 的傅里叶变换之前已使用多次：
+$$ z(t)=e^{j\omega_0 t}\;\longleftrightarrow\;
+  Z(j\omega)=2\pi\delta(\omega-\omega_0),$$
+
+它的频谱非常简单： 只有在 $\omega_0$ 处有一个冲激。
+设摄影机的采样频率为~$f_s$ （例如， 常见的电影摄影机为 $f_s=24\,\rm Hz$，
+即每秒拍摄 24~帧画面）， 则采样角频率 $\omega_s=2\pi f_s$。
+当 $\omega_0<\omega_s<2\omega_0$ 时， 会发生混叠现象。
+频域图像如下：
+$$\figure{43}$$
+如果使用截止频率为 $\omega_s/2$ 的低通滤波器对该频谱进行滤波，
+则得到的频谱只含有频率为 $\omega_0-\omega_s$ 的分量，
+得到的时域函数则是 $\tilde z(t) = e^{j(\omega_0-\omega_s)t}$。
+这说明点~$P$ 看起来像是以角速度 $(\omega_0-\omega_s)$ 在旋转。
+因为 $\omega_0-\omega_s < 0$， 所以看起来是在沿着相反的方向旋转。
+$$\figure{44}$$
+上图为该现象的一个演示。 当 $\omega_s={8\over3}\omega_0$ 时，
+没有混叠现象， 圆盘表现为逆时针转动。 在所记录的这段时间内， 共转了 3~圈。
+如果将采样频率减半， 由于混叠的原因， 圆盘看起来像顺时针转动。
+并且， 在所记录的这段时间内， 共 “转了” 1~圈。
+这说明从观察者的角度， 角速度变成了原来的 $1/3$。
+
+\medbreak
+
+\beginsection 离散傅里叶变换 (Discrete Fourier Transform)
+
+数字系统一般只能处理离散时间信号， 因此我们已经介绍了离散时间傅里叶变换。 但是它有两个问题：
+\item{1.} 需要处理无限长度的输入信号；
+\item{2.} 变换得到的 $X\bigl(e^{j\Omega}\bigr)$ 仍然是一个连续函数。
+
+实际的数字系统中， 进行的是所谓的离散傅里叶变换：
+给定有限长度的序列 $x[0]$, $x[1]$, $\dots$, $x[N-1]$，
+计算序列
+$$\tilde x[n] = \cases{x[n],&$0\leq n <N$,\cr 0,&其他}$$
+的离散时间傅里叶变换 $X\bigl(e^{j\Omega}\bigr)$
+在 $[0,2\pi]$ 上的 $N$~个等分点%
+%$$\Omega_k = {k\over N} 2\pi,\quad k=0,1,2\dots,N-1$$
+的采样值 $X[0]$, $X[1]$, $\dots$, $X[N-1]$， 其中
+$$\eqalign{
+X[k] &= X\bigl(e^{j\Omega}\bigr)\bigr|_{\Omega={k\over N}2\pi}\cr
+&= \sum_{n=0}^{N-1} x[n]e^{-j{k\over N}2\pi n}.
+}$$
+可见， 不论在时域还是频域， 都是有限长度的离散序列。
+下图是离散傅里叶变换的一个例子：
+$$\matrix{x[n]&\vcenter{\figure{45}}\cr&n\cr\noalign{\kern2\jot}
+X[k]&\hfill\vcenter{\figure{46}}\cr&n}$$
+
+读者可以验证
+$$x[n] = {1\over N} \sum_{k=0}^{N-1} X[k]e^{j{k\over N}2\pi n},$$
+这便是离散傅里叶变换的逆变换。
+
+\beginsection 快速傅里叶变换 (Fast Fourier Transform)
+
+上节描述的离散傅里叶变换， 每计算一个 $X[k]$， 需要做 $N$~次
+“乘以复指数再相加” 的运算。
+要求出所有的 $X[0]$ 到 $X[N-1]$ 的值， 则需要 $N^2$~次上述运算。
+这个计算量对于许多任务而言是不可接受的。
+例如， 录制 1~秒的数字音频， 可能产生的离散信号长度为 $N=44100$。
+这时 $N^2=\hbox{1,944,810,000}$， 离散傅里叶变换将相当耗时。
+
+1965~年， 数学家 James William Cooley 和 John Wilder Tukey
+发明了著名的快速傅里叶变换 （简称 FFT） 算法。%
+\footnote*{数学家高斯 (Carl Friedrich Gauss) 在他未发表的作品
+（于约 1805~年） 中已用过类似的计算方法。}
+这个算法给出离散傅里叶变换， 但是比上一节介绍的计算方法快许多。
+
+为了便于讨论， 这里假设 $N$ 是 2~的整数次幂。
+如果设 $x_e[n] = x[2n]$ 和 $x_o[n] = x[2n+1]$ 分别是原时域信号的偶数项%
+和奇数项， 那末对离散傅里叶变换公式可以做以下演算：
+$$\eqalign{
+X[k] &= \sum_{n=0}^{N-1} x[n] e^{-j{k\over N}2\pi n} \cr
+&= \sum_{n=0,2,\dots,N-2} x[n] e^{-j{k\over N}2\pi n}
+ + \sum_{n=0,1,\dots,N-1} x[n] e^{-j{k\over N}2\pi n} \cr
+&= \sum_{n=0}^{{N\over2}-1} x_e[n] e^{-j{k\over N/2}2\pi n}
+ + \sum_{n=0}^{{N\over2}-1} x_o[n] e^{-j{k\over N/2}2\pi n}
+                               e^{-j{2\pi k\over N}} \cr
+&= X_e[k] + X_o[k] e^{-j{2\pi k\over N}}.\cr
+}$$
+其中 $X_e[k]$ 和 $X_o[k]$ 分别是 $x_e[n]$ 和 $x_o[n]$ 的
+（长度为 $N/2$ 的） 离散傅里叶变换。
+
+显然， 这两个长度为 $N/2$ 的离散傅里叶变换可以继续用 FFT~算法进行计算，
+进一步分解为若干个长度为 $N/4$, $N/8$, $\dots$ 的离散傅里叶变换，
+直到长度为 1 为止。 长度为 1 的信号的离散傅里叶变换显然是它本身。
+这种把问题分解为小问题的思想称为{\it 分治} (divide-and-conquer)。
+
+因为它具有如此高的计算效率，
+绝大多数的数字系统都采用快速傅里叶变换计算离散傅里叶变换。
+FFT 有时已成为了傅里叶变换的代名词。
+
+\medbreak
+\noindent{\bf 计算机数学的例子}\enspace
+计算机代数系统 (Computer Algebra System)， 如 Mathematica，
+可以对代数表达式进行运算：
+$$\bigl(1+3x+3x^2+x^3\bigr) \times (1+x) = 1+4x+6x^2+4x^3+x^4.$$
+计算 2~个 $N$~次多项式的乘积， 可以使用乘法分配律， 做 $N^2$~次乘法运算。
+事实上， 当 $N$ 较大时， 可以利用 FFT 节省计算时间。
+听起来很神奇， 其实原理很简单： 多项式的乘法等价于离散序列的卷积：
+$$\{1,3,3,1\}\ast\{1,1\} = \{1,4,6,4,1\}.$$
+利用卷积定理， 可以通过计算频域内的乘法达到计算时域内的卷积的效果。
+
+举例而言， 取 $N=8$。 则上面的例子可以做如下运算
+$$\tabskip\centering\offinterlineskip
+\halign to\displaywidth{&\hfil\span
+\ifkindle$\mathstrut\scriptstyle #$\span\else\strut$#$\span\fi\hfil\cr
+\noalign{\hrule}
+i&0&1&2&3&4&5&6&7\cr
+\noalign{\hrule}
+a&1&3&3&1&0&0&0&0\cr
+A&8&2.414-5.828j&-2-2j&-0.414+0.172j&0&-0.414-0.172j&-2+2j&2.414+5.828j\cr
+b&1&1&0&0&0&0&0&0\cr
+B&2&1.707-0.707j&1-j&0.293-0.707j&0&0.293+0.707j&1+j&1.707+0.707j\cr
+AB&16&-11.657j&-4&0.343j&0&-0.343j&-4&11.657j\cr
+a*b&1&4&6&4&1&0&0&0\cr
+\noalign{\hrule}
+}$$
+
+当取 $x=10$ 时， 多项式的乘法相当于十进制数的乘法 （但是要额外处理进位的情况）。 因此， 也可以用 FFT 计算大整数的乘法。
+
+\bye
